@@ -4,21 +4,41 @@
 - Ubuntu/macOS
 - [MACS2](https://pypi.org/project/MACS2/)
 - [bedtools](https://github.com/arq5x/bedtools2)
-- [R](https://www.r-project.org/)
-- [R package fitdistrplus](https://cran.r-project.org/web/packages/fitdistrplus/index.html)
+- [R with installed fitdistrplus package](https://cran.r-project.org/web/packages/fitdistrplus/index.html)
 
-## Running instructions
-1. Place sorted and indexec BAM files into the folder `folder_X` and `folder_Y`
-2. Run `process.sh` script as shown below
+## Running from command line
+1. Clone Lenti-STARR GitHub repository
    ```bash
-   process.sh folder_X folder_Y
+   git clone https://github.com/Barski-lab/Lenti-STARR.git
    ```
-3. Check outputs in the current directory
+2. Place sorted and indexed BAM files into two separate folders - `folder_A` and `folder_B`
+3. Create a folder for output files
+   ```bash
+   mkdir results
+   ```
+4. Run `process.sh` script from the Lenti-STARR repository in the folder where you want the outputs to be saved (a.k.a `results`)
+   ```bash
+   cd /absolute/path/to/results
+   /absolute/path/to/Lenti-STARR/process.sh /absolute/path/to/folder_A /absolute/path/to/folder_B
+   ```
+5. See outputs saved in the `results` directory
 
-## Running instructions using Docker container
-1. Place sorted and indexec BAM files into the folder `folder_X` and `folder_Y`, create a separate folder for outputs `outputs`
-2. Start docker container mounting `folder_X`, `folder_Y`, and `outputs` folders as shown below
+## Using Docker container
+1. Clone Lenti-STARR GitHub repository
    ```bash
-   docker run --rm -ti -v folder_X:/tmp/folder_X folder_Y:/tmp/folder_Y 
-   outputs:/tmp/outputs biowardrobe2/starr:v0.0.1 "cd /tmp/outputs && process.sh /tmp/folder_X /tmp/folder_Y"
+   git clone https://github.com/Barski-lab/Lenti-STARR.git
    ```
+2. Place sorted and indexed BAM files into two separate folders - `folder_A` and `folder_B`
+3. Create a folder for output files
+   ```bash
+   mkdir results
+   ```
+4. Start `process.sh` script from the docker container mounting `folder_A`, `folder_B`, and `results` folders as shown below
+   ```bash
+   docker run --rm -ti -w /tmp/results -v /absolute/path/to/folder_A:/tmp/folder_A -v /absolute/path/to/folder_B:/tmp/folder_B -v /absolute/path/to/results:/tmp/results biowardrobe2/starr:v0.0.1 process.sh /tmp/folder_A /tmp/folder_B
+   ```
+5. See outputs saved in the `results` directory
+
+
+**Notes:**
+- `/absolute/path/to` should be replaced with the real locations on your file system
