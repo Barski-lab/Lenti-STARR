@@ -68,22 +68,22 @@ preprocess $CL_DIRECTORY cl
 
 echo "Calling peaks TM -> CL"
 mkdir res_tm_cl && cd res_tm_cl
-macs2 callpeak -f BEDPE --keep-dup all -t ../tm_concatenated.bed -c ../cl_concatenated.bed -g 2.7E9 -n tm_cl
+macs2 callpeak -f BEDPE --keep-dup all -t ../tm_concatenated.bed -c ../cl_concatenated.bed -g 2.7E9 -n tm_cl || true
 cd ..
 
 echo "Calling peaks CL -> TM"
 mkdir res_cl_tm && cd res_cl_tm
-macs2 callpeak -f BEDPE --keep-dup all -t ../cl_concatenated.bed -c ../tm_concatenated.bed -g 2.7E9 -n cl_tm
+macs2 callpeak -f BEDPE --keep-dup all -t ../cl_concatenated.bed -c ../tm_concatenated.bed -g 2.7E9 -n cl_tm || true
 cd ..
 
 echo "Calling peaks TM"
 mkdir res_tm && cd res_tm
-macs2 callpeak -f BAMPE -t ../tm_concatenated.bed -g 2.7E9 --outdir tm
+macs2 callpeak -f BAMPE -t ../tm_concatenated.bed -g 2.7E9 --outdir tm || true
 cd ..
 
 echo "Calling peaks CL"
 mkdir res_cl && cd res_cl
-macs2 callpeak -f BAMPE -t ../cl_concatenated.bed -g 2.7E9 --outdir cl
+macs2 callpeak -f BAMPE -t ../cl_concatenated.bed -g 2.7E9 --outdir cl || true
 cd ..
 
 echo "Removing temporary data"
