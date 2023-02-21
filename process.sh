@@ -67,17 +67,22 @@ preprocess $TM_DIRECTORY tm
 preprocess $CL_DIRECTORY cl
 
 echo "Calling peaks TM -> CL"
-mkdir tm_cl && cd tm_cl
+mkdir res_tm_cl && cd res_tm_cl
 macs2 callpeak -f BEDPE --keep-dup all -t ../tm_concatenated.bed -c ../cl_concatenated.bed -g 2.7E9 -n tm_cl
 cd ..
 
 echo "Calling peaks CL -> TM"
-mkdir cl_tm && cd cl_tm
+mkdir res_cl_tm && cd res_cl_tm
 macs2 callpeak -f BEDPE --keep-dup all -t ../cl_concatenated.bed -c ../tm_concatenated.bed -g 2.7E9 -n cl_tm
 cd ..
 
+echo "Calling peaks TM"
+mkdir res_tm && cd res_tm
+macs2 callpeak -f BAMPE -t ../tm_concatenated.bed -g 2.7E9 --outdir tm
+cd ..
+
 echo "Calling peaks CL"
-mkdir cl && cd cl
+mkdir res_cl && cd res_cl
 macs2 callpeak -f BAMPE -t ../cl_concatenated.bed -g 2.7E9 --outdir cl
 cd ..
 
