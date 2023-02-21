@@ -11,7 +11,7 @@
    ```bash
    git clone https://github.com/Barski-lab/Lenti-STARR.git
    ```
-2. Place sorted and indexed BAM files into two separate folders - `folder_A` and `folder_B`
+2. Place sorted and indexed BAM files into two separate folders - `folder_A` and `folder_B`, where A is STARRSEQ .bam and B is control plasmid .bam
 3. Create a folder for output files
    ```bash
    mkdir results
@@ -28,7 +28,7 @@
    ```bash
    git clone https://github.com/Barski-lab/Lenti-STARR.git
    ```
-2. Place sorted and indexed BAM files into two separate folders - `folder_A` and `folder_B`
+2. Place sorted and indexed BAM files into two separate folders - `folder_A` and `folder_B` where A is STARRSEQ .bam and B is control plasmid .bam
 3. Create a folder for output files
    ```bash
    mkdir results

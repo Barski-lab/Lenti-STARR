@@ -66,12 +66,12 @@ CL_DIRECTORY=$2
 preprocess $TM_DIRECTORY tm
 preprocess $CL_DIRECTORY cl
 
-echo "Calling peaks TM -> CL"
+echo "Calling peaks Enhancers ::(tx -t) STARR-Seq Reads  / (control -c) Control Plasmid Reads"
 mkdir res_tm_cl && cd res_tm_cl
 macs2 callpeak -f BEDPE --keep-dup all -t ../tm_concatenated.bed -c ../cl_concatenated.bed -g 2.7E9 -n res_tm_cl || true
 cd ..
 
-echo "Calling peaks CL -> TM"
+echo "Calling peaks NRE ::(tx -t) Control Plasmid Reads / (control -c) STARR-Seq Reads"
 mkdir res_cl_tm && cd res_cl_tm
 macs2 callpeak -f BEDPE --keep-dup all -t ../cl_concatenated.bed -c ../tm_concatenated.bed -g 2.7E9 -n res_cl_tm || true
 cd ..
